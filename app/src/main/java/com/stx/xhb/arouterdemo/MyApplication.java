@@ -3,6 +3,7 @@ package com.stx.xhb.arouterdemo;
 import android.app.Application;
 
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.stx.xhb.module_basecore.RouterManger;
 
 /**
  * @author: xiaohaibin.
@@ -16,10 +17,7 @@ public class MyApplication extends Application{
     @Override
     public void onCreate() {
         super.onCreate();
-        if (BuildConfig.DEBUG) {
-            ARouter.openLog();
-            ARouter.openDebug();
-        }
-        ARouter.init(this);
+        //初始化路由
+        RouterManger.initRouter(this);
     }
 }

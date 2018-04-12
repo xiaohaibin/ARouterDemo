@@ -17,21 +17,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".Test2Activity" />
-
+        <activity android:name=".TestActivity" />
         <activity android:name=".SchameFilterActivity">
+
             <!-- Schame -->
             <intent-filter>
                 <data
                     android:host="m.aliyun.com"
-                    android:scheme="arouter"/>
-                <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
+                    android:scheme="arouter" />
+
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
             </intent-filter>
         </activity>
-
+        <activity android:name=".NeedLoginActivity"></activity>
     </application>
 
 </manifest>

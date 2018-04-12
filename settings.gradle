@@ -1,1 +1,1 @@
-include ':app', ':module_user'
+include ':app', ':module_user', ':module_basecore'

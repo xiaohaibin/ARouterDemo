@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.stx.xhb.module_basecore.RouterManger;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -13,8 +14,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button btn1 = findViewById(R.id.btn_1);
+        Button btn1=findViewById(R.id.btn_1);
+        Button btn2=findViewById(R.id.btn_2);
+        Button btn3=findViewById(R.id.btn_3);
         btn1.setOnClickListener(this);
+        btn2.setOnClickListener(this);
+        btn3.setOnClickListener(this);
     }
 
     @Override
@@ -22,12 +27,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (view.getId()) {
             case R.id.btn_1:
                 ARouter.getInstance()
-                        .build("/test/activity2")
-                        .withString("key1", "小猪佩奇身上纹，掌声送给社会人")
+                        .build(RouterManger.Path.MAIN_TEST_ACTIVITY)
+                        .withString("key", "小猪佩奇身上纹，掌声送给社会人")
                         .navigation(this);
                 break;
             case R.id.btn_2:
-                ARouter.getInstance().build("/module_user/login").navigation();
+                ARouter.getInstance().build(RouterManger.Path.USER_LOGIN_ACTIVITY).navigation();
+                break;
+            case R.id.btn_3:
+                ARouter.getInstance().build(RouterManger.Path.MAIN_NEED_LOGIN_ACTIVITY).navigation();
                 break;
             default:
                 break;
