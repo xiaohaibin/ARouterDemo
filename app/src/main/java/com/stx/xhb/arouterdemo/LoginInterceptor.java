@@ -1,13 +1,11 @@
 package com.stx.xhb.arouterdemo;
 
 import android.content.Context;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.alibaba.android.arouter.facade.Postcard;
 import com.alibaba.android.arouter.facade.annotation.Interceptor;
 import com.alibaba.android.arouter.facade.callback.InterceptorCallback;
-import com.alibaba.android.arouter.facade.callback.NavigationCallback;
 import com.alibaba.android.arouter.facade.template.IInterceptor;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.stx.xhb.module_basecore.Constants;
@@ -23,12 +21,21 @@ import com.stx.xhb.module_basecore.RouterManger;
  */
 @Interceptor(priority = 8, name = "登录跳转拦截器")
 public class LoginInterceptor implements IInterceptor {
+
     Context mContext;
 
     @Override
-    public void process(Postcard postcard, InterceptorCallback callback) {
+    public void process(final Postcard postcard, final InterceptorCallback callback) {
         if (Constants.NEED_LOGIN == postcard.getExtra()) {
-            ARouter.getInstance().build(RouterManger.Path.USER_LOGIN_ACTIVITY).navigation();
+            MainLooper.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    Toast.makeText(mContext, "请登录", Toast.LENGTH_SHORT).show();
+                    //处理完成，交还控制权
+                    ARouter.getInstance().build(RouterManger.Path.USER_LOGIN_ACTIVITY).navigation();
+                    callback.onInterrupt(null);
+                }
+            });
         } else {
             //处理完成，交还控制权
             callback.onContinue(postcard);
