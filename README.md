@@ -1,5 +1,4 @@
 # ARouterDemo
-Android 模块化ARouter  Demo
 
 ## 前言
 
