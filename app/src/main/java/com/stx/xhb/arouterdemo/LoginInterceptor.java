@@ -30,9 +30,10 @@ public class LoginInterceptor implements IInterceptor {
             MainLooper.runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
+                    //如果需要再界面展示东西，需要切换到主线程进行操作
                     Toast.makeText(mContext, "请登录", Toast.LENGTH_SHORT).show();
-                    //处理完成，交还控制权
                     ARouter.getInstance().build(RouterManger.Path.USER_LOGIN_ACTIVITY).navigation();
+                    //处理完成，交还控制权
                     callback.onInterrupt(null);
                 }
             });

@@ -4,12 +4,13 @@ import android.app.Application;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 
+
 /**
  * @author: xiaohaibin.
  * @time: 2018/4/12
  * @mail:xhb_199409@163.com
  * @github:https://github.com/xiaohaibin
- * @describe: 路由管理工具类
+ * @describe: 路由框架管理工具类
  */
 public class RouterManger {
 
